@@ -1,0 +1,62 @@
+.header-container {
+    height: 75px;
+    background-color: #fff;
+    width: 100%;
+    padding: 0px 70px;
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 9;
+
+    .right-side {
+        height: 100%;
+    }
+
+    .logo-container {
+        height: 100%;
+        display: inline-block;
+
+        .logo {
+            max-height: 100%;
+            padding: 18px 0px;
+        }
+    }
+
+    .links-container {
+        display: inline-block;
+        padding: 10px 50px;
+
+        .header-link {
+            padding: 0px 20px;
+            color: #222;
+            font-weight: bold;
+        }
+    }
+
+    .controls-container {
+        display: inline-block;
+        padding: 0px 50px;
+        float: $end;
+
+        .ant-badge-dot {
+            top: 11px;
+            right: 12px;
+            width: 9px;
+            height: 9px;
+        }
+
+        .control-btn {
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0px 5px;
+
+            &:last-child {
+                background-color: red;
+                margin-#{$start}: 21px;
+            }
+        }
+    }
+}

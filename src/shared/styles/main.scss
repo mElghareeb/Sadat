@@ -1,0 +1,12 @@
+$mobileSize:480px;
+$tabletSize:768px;
+html{
+    @media(max-width:$tabletSize){
+        overflow-x: hidden !important;
+    }
+}
+@import '../../layouts/components/header/style.scss';
+@import '../../layouts/login-layout.scss';
+@import '../../layouts/main-layout.scss';
+@import '../../layouts/components/side-menu/side-menu.scss'
+

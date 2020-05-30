@@ -1,0 +1,86 @@
+.internal-form-container{
+    height: 100%;
+}
+.document-uploader-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
+}
+.document-uploader-container{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.form-container {
+    background-color: #fff;
+    height: 100%;
+    padding: 40px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+
+    .form-title{
+        font-size: 18px;
+        font-weight: bold;
+        color: #222;
+    }
+
+    .internal-form{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        .ant-form-item{
+            margin: 35px auto;
+            .ant-picker{
+                width: 100%;
+            }
+        }
+        .perioty-label {
+            font-weight: bold;
+        }
+        .v-form-item {
+            display: inline-block;
+            width: 100%;
+
+            .ant-col.ant-form-item-control{
+                width: 100%;
+            }
+        }
+    }
+
+    .perioty-input-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .priority-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .icon-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #ccc;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                margin: 0px 5px;
+                padding: 10px;
+                cursor: pointer;
+                img {
+                    max-width: 100%;
+                }
+
+                &:first-child.active {
+                    background-color: green;
+                }
+                &:nth-child(2).active {
+                    background-color: orange;
+                }
+                &:last-child.active {
+                    background-color: red;
+                }
+            }
+        }
+    }
+}

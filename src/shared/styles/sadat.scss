@@ -1,0 +1,11 @@
+$start:left;
+$end:right;
+html *,body,h1, h2, h3, h4, h5,.ui *, .ui.button,.ui.form input{
+    &:not(.icon){
+font-family: 'Open Sans', sans-serif !important;}}
+.lang-switch{
+    padding-#{$end}:20px;
+    background: transparent url('/public/assets/images/ar.png') no-repeat $end center;
+}
+
+@import 'main.scss';
