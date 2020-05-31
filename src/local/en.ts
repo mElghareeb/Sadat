@@ -1,6 +1,5 @@
 const en = {
 	otherLanguage: "العربية",
-	dashboard: 'Dashboard',
 	reports: 'Reports',
 	login: {
 		userName: 'User Name',
@@ -8,6 +7,22 @@ const en = {
 		submit: 'Submit',
 		rememberMe:'Remember me'
 	},
+	dashboard:{
+		dashboard: 'Dashboard',
+		newDocument: 'New Document',
+		externalDocuments: 'External Documents',
+		internalDocuments: 'Internal Documents',
+		totalDocuments: 'Total Documents',
+		viewAll: 'View All',
+		history: 'History',
+		users: 'Users'
+	},
+	table:{
+		from: 'From',
+		subject:'Subject',
+		date:'Date',
+		Priorty:'Priorty',
+	}
 };
 
 export default en;

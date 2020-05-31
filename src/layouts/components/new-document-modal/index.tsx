@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import {
   ArrowDownOutlined, ArrowUpOutlined
 } from '@ant-design/icons';
+import { I18n } from 'react-redux-i18n';
+
 import './style.scss';
 
 interface newDocumentInterface {
@@ -20,7 +22,7 @@ class NewDocumentModal extends React.Component<newDocumentInterface> {
       <div>
 
         <Modal
-          title="New Document"
+          title={I18n.t("dashboard.newDocument")}
           centered
           visible={this.props.showModal}
           onOk={() => this.props.showNewDocumentModal(false)}
@@ -33,7 +35,7 @@ class NewDocumentModal extends React.Component<newDocumentInterface> {
                   <div className="icon-container">
                     <ArrowDownOutlined  style={{ fontSize: '26px', color: '#222' }}/>
                   </div>
-                  <div className="link-txt">Internal Documents</div>
+                  <div className="link-txt">{I18n.t("dashboard.internalDocuments")}</div>
                 </div>
               </Link>
             </div>
@@ -44,7 +46,7 @@ class NewDocumentModal extends React.Component<newDocumentInterface> {
                   <div className="icon-container">
                     <ArrowUpOutlined  style={{ fontSize: '26px', color: '#222' }} />
                   </div>
-                  <div className="link-txt">External Documents</div>
+                  <div className="link-txt">{I18n.t("dashboard.externalDocuments")}</div>
                 </div>
               </Link>
             </div>

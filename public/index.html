@@ -16,6 +16,22 @@
     -->
     <link rel="manifest" crossorigin="use-credentials" href="/public/manifest.json" />
 
+    <script type="text/javascript">
+      function getCookie(name) {
+        var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+        return v ? v[2] : null;
+      }
+       if (getCookie('Language')=='en') {
+         console.log('en')
+       document.write(` <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">`);
+        }
+      else{ 
+        console.log('asaar')
+
+       document.write(`<link href = "https://fonts.googleapis.com/css?family=Cairo:400,600,700&display=swap" rel = "stylesheet" >`);
+      }
+    </script>
+
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.

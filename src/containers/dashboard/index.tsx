@@ -2,6 +2,8 @@ import React from 'react';
 import { Card, Row, Col } from 'antd';
 import './style.scss'
 import { Link } from 'react-router-dom';
+import { I18n } from 'react-redux-i18n';
+
 
 function Dashboard() {
     const { Meta } = Card;
@@ -15,7 +17,7 @@ function Dashboard() {
                         >
                             <div className="documents-count">5</div>
 
-                            <Meta title="Internal Documents" description="View All" />
+                            <Meta title={I18n.t("dashboard.internalDocuments")} description={I18n.t("dashboard.viewAll")} />
                         </Card>
                     </Link>
                 </Col>
@@ -25,7 +27,7 @@ function Dashboard() {
                             hoverable
                         >
                             <div className="documents-count">18</div>
-                            <Meta title="External Documents" description="View All" />
+                            <Meta title={I18n.t("dashboard.externalDocuments")} description={I18n.t("dashboard.viewAll")} />
                         </Card>
                     </Link>
                 </Col>
@@ -35,7 +37,7 @@ function Dashboard() {
                             hoverable
                         >
                             <div className="documents-count">35</div>
-                            <Meta title="Total Documents" description="View All" />
+                            <Meta title={I18n.t("dashboard.totalDocuments")} description={I18n.t("dashboard.viewAll")} />
                         </Card>
                     </Link>
                 </Col>

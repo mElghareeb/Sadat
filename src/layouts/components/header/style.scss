@@ -37,7 +37,9 @@
     }
 
     .controls-container {
-        display: inline-block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 0px 50px;
         float: $end;
 
@@ -58,5 +60,14 @@
                 margin-#{$start}: 21px;
             }
         }
+    }
+
+    .lang-switcher-container {
+        width: 85px;
+        height: 30px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

@@ -27,30 +27,30 @@ class SideMenu extends React.Component {
                 >
 
                     <Menu.Item className='new-document-btn' key="0" icon={<PlusSquareFilled style={{ fontSize: '22px'}}/>} onClick={() => this.showNewDocumentModal(true)}>
-                        <div className="new-document-btn-container">New Document <RightCircleOutlined /></div>
+                        <div className="new-document-btn-container">{I18n.t("dashboard.newDocument")} <RightCircleOutlined /></div>
                     </Menu.Item>
 
                     <Menu.Item key="1" icon={<Link to='/internal-documents'><div className='side-icon-container'><ArrowDownOutlined /></div></Link>}>
                         <Link to='/internal-documents'>
-                        <div className="new-document-btn-container">Internal Documents <Badge count={4} /></div>
+                        <div className="new-document-btn-container">{I18n.t("dashboard.internalDocuments")} <Badge count={4} /></div>
                         </Link>
                     </Menu.Item>
 
                     <Menu.Item key="2" icon={<Link to='/external-documents'><div className='side-icon-container'><ArrowUpOutlined /></div></Link>}>
                         <Link to='/external-documents'>
-                        <div className="new-document-btn-container">External Documents <Badge count={4} /></div>
+                        <div className="new-document-btn-container">{I18n.t("dashboard.externalDocuments")} <Badge count={4} /></div>
                     </Link>
                     </Menu.Item>
 
                     <Menu.Item key="3" icon={<Link to='/history'><HistoryOutlined style={{ fontSize: '20px'}}/></Link>}>
                         <Link to='/history'>
-                            History
+                        {I18n.t("dashboard.history")}
                     </Link>
                     </Menu.Item>
 
                     <Menu.Item key="4" icon={<Link to='/users'><UserOutlined style={{ fontSize: '20px'}}/></Link>}>
                         <Link to='/users'>
-                            Users
+                        {I18n.t("dashboard.users")}
                     </Link>
                     </Menu.Item>
                 </Menu>

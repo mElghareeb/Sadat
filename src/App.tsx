@@ -21,12 +21,9 @@ class App extends React.Component<props, {}> {
     super(props);
     
 		if (this.props.lang === 'ar') {
-      console.log('aaaar')
 			require('./shared/styles/sadat-ar.scss');
 			}
 		else {
-      console.log('eeeen')
-
 			require('./shared/styles/sadat.scss');
 		}
   }

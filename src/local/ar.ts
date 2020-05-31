@@ -1,6 +1,6 @@
 const ar = {
 	otherLanguage: "English",
-	dashboard: 'داش بورد',
+	
 	reports: 'التقارير',
 	login: {
 		userName: 'اسم المستخدم',
@@ -8,6 +8,23 @@ const ar = {
 		submit: 'دخول',
 		rememberMe:'تذكرني'
 	},
+	dashboard:{
+		dashboard: 'داش بورد',
+		newDocument: 'ملف جديد',
+		externalDocuments: 'الملفات الخارجية',
+		internalDocuments: 'الملفات الداخلية',
+		totalDocuments: 'كل الملفات',
+		viewAll: 'مشاهدة الكل',
+		history: 'سجلات',
+		users: 'مستخدمين'
+	},
+	table:{
+		from: 'من',
+		subject:'اسم الملف',
+		date:'التاريخ',
+		Priorty:'الاولوية',
+	}
+	
 };
 
 export default ar;

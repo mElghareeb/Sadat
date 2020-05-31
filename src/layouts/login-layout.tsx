@@ -15,7 +15,8 @@ function LoginLayout() {
                     style={{ width: 500 }}
                 >
                     <LoginForm />
-            <LangSwitcher />
+                    
+                    <LangSwitcher />
 
                 </Card>
             </div>

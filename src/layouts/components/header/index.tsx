@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { I18n } from 'react-redux-i18n';
 import { Badge, Avatar, Popover } from 'antd';
 import { SettingOutlined, BellOutlined } from '@ant-design/icons';
-
+import LangSwitcher from '../lang-switcher'
 
 function Header() {
     const notifications = (
@@ -33,7 +33,7 @@ function Header() {
 
                 <div className="links-container">
                     <Link className='header-link' to='/dashboard'>{
-                        I18n.t('dashboard')
+                        I18n.t('dashboard.dashboard')
                     }</Link>
 
                     <Link className='header-link' to='/reports'>{
@@ -59,6 +59,10 @@ function Header() {
                         U
                     </Avatar>
                 </Popover>
+
+                <div className="lang-switcher-container">
+                    <LangSwitcher />
+                </div>
             </div>
         </header>
     );
