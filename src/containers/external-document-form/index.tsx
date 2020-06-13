@@ -2,6 +2,7 @@ import React from 'react';
 import { message, Row, Col, Form, DatePicker, Button, Input, Select, Upload } from 'antd';
 import { InboxOutlined, RightCircleOutlined } from '@ant-design/icons';
 import './style.scss';
+import { API_URLS } from '../../shared/servicesURLs';
 
 const { Dragger } = Upload;
 const OPTIONS = ['Apples', 'Nails', 'Bananas', 'Helicopters'];
@@ -35,7 +36,7 @@ const OPTIONS = ['Apples', 'Nails', 'Bananas', 'Helicopters'];
 const props = {
     name: 'file',
     multiple: true,
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+    action: API_URLS.UPLOAD_FILE,
     onChange(info) {
         const { status } = info.file;
         if (status !== 'uploading') {

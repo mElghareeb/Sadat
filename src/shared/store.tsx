@@ -8,12 +8,12 @@ import { createLogger } from "redux-logger";
 import {loadTranslations, setLocale, syncTranslationWithStore} from 'react-redux-i18n';
 import translations from '../local';
 import Cookies from 'universal-cookie';
+import { composeWithDevTools } from 'redux-devtools-extension';
 // import { initiateRequests } from './helpers';
 
 export const history = createBrowserHistory();
-const middleware = applyMiddleware( promise, thunk, routerMiddleware(history), createLogger() );
+const middleware = composeWithDevTools(applyMiddleware( promise, thunk, routerMiddleware(history), createLogger()) );
 export const store = createStore(reducers, middleware);
-console.log('Mahmoud')
 const cookies = new Cookies();
 // initiateRequests();
 syncTranslationWithStore(store);

@@ -1,11 +1,9 @@
 import React from 'react';
 import { Card } from 'antd';
-import LoginForm from './components/login';
+import LoginForm from '../containers/login';
 import LangSwitcher from './components/lang-switcher'
 
 function LoginLayout() {
-    const { Meta } = Card;
-
     return (
         <div className="login-layout">
             <div className="background-color-container"></div>

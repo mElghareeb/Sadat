@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { I18n } from 'react-redux-i18n';
 import { Badge, Avatar, Popover, Menu, Button } from 'antd';
 import {
-    PlusSquareFilled, ArrowDownOutlined, ArrowUpOutlined, HistoryOutlined, UserOutlined, RightCircleOutlined
+    PlusSquareFilled, ArrowDownOutlined, ArrowUpOutlined, HistoryOutlined, UserOutlined, RightCircleOutlined, FolderOutlined 
 } from '@ant-design/icons';
 import NewDocumentModal from '../new-document-modal';
 
@@ -42,13 +42,19 @@ class SideMenu extends React.Component {
                     </Link>
                     </Menu.Item>
 
-                    <Menu.Item key="3" icon={<Link to='/history'><HistoryOutlined style={{ fontSize: '20px'}}/></Link>}>
+                    <Menu.Item key="3" icon={<Link to='/folders'><div className='side-icon-container'><FolderOutlined /></div></Link>}>
+                        <Link to='/folders'>
+                        <div className="new-document-btn-container">{I18n.t("dashboard.folders")} <Badge count={4} /></div>
+                    </Link>
+                    </Menu.Item>
+
+                    <Menu.Item key="4" icon={<Link to='/history'><HistoryOutlined style={{ fontSize: '20px'}}/></Link>}>
                         <Link to='/history'>
                         {I18n.t("dashboard.history")}
                     </Link>
                     </Menu.Item>
 
-                    <Menu.Item key="4" icon={<Link to='/users'><UserOutlined style={{ fontSize: '20px'}}/></Link>}>
+                    <Menu.Item key="5" icon={<Link to='/users'><UserOutlined style={{ fontSize: '20px'}}/></Link>}>
                         <Link to='/users'>
                         {I18n.t("dashboard.users")}
                     </Link>

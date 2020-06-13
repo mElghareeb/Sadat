@@ -24,6 +24,7 @@ class NewDocumentModal extends React.Component<newDocumentInterface> {
         <Modal
           title={I18n.t("dashboard.newDocument")}
           centered
+          className='new-document-modal'
           visible={this.props.showModal}
           onOk={() => this.props.showNewDocumentModal(false)}
           onCancel={() => this.props.showNewDocumentModal(false)}

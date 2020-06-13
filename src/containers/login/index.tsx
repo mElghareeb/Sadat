@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Input, Button, Checkbox } from "antd";
-import { I18n } from 'react-redux-i18n';
+import { I18n } from "react-redux-i18n";
+import { useDispatch } from 'react-redux'
+import { authenticateUserAction } from './actions';
+import { cookies } from '../../shared/helpers';
+import { Redirect } from 'react-router-dom';
 
 const layout = {
   labelCol: { span: 8 },
@@ -10,8 +14,25 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
 const LoginForm = () => {
+
+  useEffect(() => {
+    console.log('useEffect')
+    if (cookies.get('accessToken')) {
+      let params = new URLSearchParams(window.location.search);
+      let origin = params.get('origin');
+       if(origin){
+    window.location.href = origin
+
+       }else{
+        window.location.href = '/'
+
+       } 
+  }
+  })
+
+ const dispatch = useDispatch()
   const onFinish = (values) => {
-    console.log("Success:", values);
+    dispatch(authenticateUserAction(values.username,values.password));
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -29,7 +50,7 @@ const LoginForm = () => {
       <Form.Item
         label={I18n.t("login.userName")}
         name="username"
-        rules={[{ required: true, message: "Please input your username!" }]}
+        rules={[{ required: true, message: "Please input your username or your email!" }]}
       >
         <Input />
       </Form.Item>
@@ -48,7 +69,7 @@ const LoginForm = () => {
 
       <Form.Item {...tailLayout}>
         <Button type="primary" htmlType="submit">
-        {I18n.t("login.submit")}
+          {I18n.t("login.submit")}
         </Button>
       </Form.Item>
     </Form>

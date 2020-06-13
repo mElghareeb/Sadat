@@ -2,7 +2,7 @@ const en = {
 	otherLanguage: "العربية",
 	reports: 'Reports',
 	login: {
-		userName: 'User Name',
+		userName: 'User Name / email',
 		password: 'Password',
 		submit: 'Submit',
 		rememberMe:'Remember me'
@@ -15,7 +15,8 @@ const en = {
 		totalDocuments: 'Total Documents',
 		viewAll: 'View All',
 		history: 'History',
-		users: 'Users'
+		users: 'Users',
+		folders:'Folders'
 	},
 	table:{
 		from: 'From',

@@ -3,7 +3,7 @@ const ar = {
 	
 	reports: 'التقارير',
 	login: {
-		userName: 'اسم المستخدم',
+		userName: 'اسم المستخدم / الايميل',
 		password: 'كلمة المرور',
 		submit: 'دخول',
 		rememberMe:'تذكرني'
@@ -16,7 +16,9 @@ const ar = {
 		totalDocuments: 'كل الملفات',
 		viewAll: 'مشاهدة الكل',
 		history: 'سجلات',
-		users: 'مستخدمين'
+		users: 'مستخدمين',
+		folders:'مجلدات'
+
 	},
 	table:{
 		from: 'من',
