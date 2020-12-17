@@ -2,21 +2,46 @@ import React from 'react';
 import { Card } from 'antd';
 import LoginForm from '../containers/login';
 import LangSwitcher from './components/lang-switcher'
+import Header from './components/header';
 
 function LoginLayout() {
     return (
         <div className="login-layout">
-            <div className="background-color-container"></div>
+            <header className="header-container">
+                <div className="right-side">
+                    <div className="logo-container">
+                        <img src="/public/assets/images/logo.png" alt="" className="logo" />
+                    </div>
+
+                </div>
+                <div className="controls-container">
+
+                    {/* <div className="lang-switcher-container">
+                        <LangSwitcher />
+                    </div> */}
+                </div>
+            </header>
             <div className="card-container">
-                <Card
+                <div style={{ width: 400, marginTop: 100 }}>
+                    <div className="login-title-container">
+                        <div className="login-title">
+                            Login
+                        </div>
+                        <div className="login-line">
+                            
+                        </div>
+                    </div>
+                    <LoginForm />
+                </div>
+
+                {/* <Card
                     hoverable
                     style={{ width: 500 }}
                 >
-                    <LoginForm />
-                    
+
                     <LangSwitcher />
 
-                </Card>
+                </Card> */}
             </div>
 
         </div>

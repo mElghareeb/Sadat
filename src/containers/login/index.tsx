@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox, message } from "antd";
 import { I18n } from "react-redux-i18n";
 import { useDispatch } from 'react-redux'
 import { authenticateUserAction } from './actions';
@@ -7,11 +7,11 @@ import { cookies } from '../../shared/helpers';
 import { Redirect } from 'react-router-dom';
 
 const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
+  labelCol: { span: 24 },
+  wrapperCol: { span: 24 },
 };
 const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
+  wrapperCol: { offset: 0, span: 24 },
 };
 const LoginForm = () => {
 
@@ -20,19 +20,19 @@ const LoginForm = () => {
     if (cookies.get('accessToken')) {
       let params = new URLSearchParams(window.location.search);
       let origin = params.get('origin');
-       if(origin){
-    window.location.href = origin
+      if (origin) {
+        window.location.href = origin
 
-       }else{
+      } else {
         window.location.href = '/'
 
-       } 
-  }
+      }
+    }
   })
 
- const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const onFinish = (values) => {
-    dispatch(authenticateUserAction(values.username,values.password));
+    dispatch(authenticateUserAction(values.username, values.password));
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -42,15 +42,18 @@ const LoginForm = () => {
   return (
     <Form
       {...layout}
+      layout="vertical"
       name="basic"
-      initialValues={{ remember: true }}
+      initialValues={{ remember: true, layout: 'vertical' }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
         label={I18n.t("login.userName")}
         name="username"
-        rules={[{ required: true, message: "Please input your username or your email!" }]}
+        rules={[{ required: true, message: "Please input your username or your email!" },
+          // { type: 'email' , message: "not a valid email!"}
+        ]}
       >
         <Input />
       </Form.Item>
@@ -63,12 +66,12 @@ const LoginForm = () => {
         <Input.Password />
       </Form.Item>
 
-      <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-        <Checkbox>{I18n.t("login.rememberMe")}</Checkbox>
-      </Form.Item>
+      <div className="forget-password-container">
+        <a href="/forget">{I18n.t("login.forgetPassword")}</a>
+      </div>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button className='login-btn' type="primary" htmlType="submit">
           {I18n.t("login.submit")}
         </Button>
       </Form.Item>

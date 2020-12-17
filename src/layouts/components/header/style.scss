@@ -70,4 +70,21 @@
         justify-content: center;
         align-items: center;
     }
+
+    input.ant-input{
+        background-color: #F8F8F8;
+        border: 0;
+    }
+    span.ant-input-wrapper.ant-input-group {
+        border: 1px solid #eee;
+        background-color: #F8F8F8;
+        border-radius: 5px;
+
+    }
+    button.ant-btn.ant-btn-primary.ant-input-search-button {
+        background-color: #F8F8F8;
+        color: #000;
+        border: 0;
+        box-shadow: none !important;
+    }
 }

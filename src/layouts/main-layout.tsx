@@ -1,44 +1,44 @@
-import React from "react";
-import { Layout, Button } from "antd";
-import Header from "./components/header";
-import SideMenu from "./components/side-menu";
-import { RightOutlined, LeftOutlined } from "@ant-design/icons";
-import Dashboard from "../containers/dashboard";
-import { Switch, Route, Redirect, Link } from "react-router-dom";
-import InternalForm from "../containers/internal-document-form";
-import IternalDocumentsTable from "../containers/internal-documents-table";
-import IternalDocument from "../containers/internal-document";
-import ExternalDocument from "../containers/external-document";
-import ExternalForm from "../containers/external-document-form";
-import ExternalDocumentsTable from "../containers/external-documents-table";
-import { cookies } from "../shared/helpers";
-import Folders from '../containers/folders';
+import React, { useEffect, useState } from "react";
+import { Layout, Button, Breadcrumb } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { Route, Switch, useHistory } from "react-router-dom";
+import { cookies } from '../shared/helpers';
+import { getProfileAction } from './components/header/action';
+import Header from './components/header';
+import News from '../containers/news';
+import SideMenu from './components/side-menu';
+import Photos from '../containers/photos';
+import Videos from '../containers/videos';
+import Contacts from "../containers/contacts";
+import Jobs from "../containers/jobs";
+import Internaljobs from "../containers/internal-jobs";
 
-const { Content, Sider } = Layout;
+const MainLayout = () => {
+  let history = useHistory();
+  const dispatch = useDispatch();
+  // const profileData = useSelector((state) => state.profile);
+  const [collapsed, setCollapsed] = useState(true)
+  const { Content, Sider } = Layout;
+  useEffect(() => {
+    if (!cookies.get("accessToken")) {
+      window.location.href = "/login?origin=" + window.location.pathname;
+    } else {
+      // dispatch(getProfileAction());
+      console.log('get Profile')
+    }
+  }, []);
 
-class MainLayout extends React.Component {
-  state = {
-    collapsed: false,
-  };
 
-  toggleCollapsed = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  };
-
-
-  render() {
-    return (
+  return (
+    <Layout>
+      <Header />
       <Layout>
-        <Header />
-        <Layout>
-          <Sider
-            width={300}
-            className="site-layout-background"
-            collapsed={this.state.collapsed}
-          >
-            <Button
+        <Sider
+          width={100}
+          className="site-layout-background"
+          collapsed={collapsed}
+        >
+          {/* <Button
               className="side-menu-controller-btn"
               style={{ fontWeight: "bold" }}
               onClick={this.toggleCollapsed}
@@ -46,62 +46,45 @@ class MainLayout extends React.Component {
               {React.createElement(
                 this.state.collapsed ? RightOutlined : LeftOutlined
               )}
-            </Button>
-            <SideMenu />
-          </Sider>
-          <Layout style={{ padding: "0 24px 24px" }}>
-            <Content
-              className="site-layout-background"
-              style={{
-                padding: 24,
-                margin: 0,
-                minHeight: 280,
-              }}
-            >
-              <Switch>
-                <Route exact path={"/"} component={Dashboard} />
-                <Route path={"/dashboard"} component={Dashboard} />
-                <Route
-                  path="/new-internal-documents"
-                  component={InternalForm}
-                />
-                <Route
-                  path="/new-external-documents"
-                  component={ExternalForm}
-                />
-                <Route
-                  exact
-                  path="/internal-documents"
-                  component={IternalDocumentsTable}
-                />
-                <Route
-                  exact
-                  path="/external-documents"
-                  component={ExternalDocumentsTable}
-                />
-                <Route
-                  exact
-                  path="/internal-documents/:id"
-                  component={IternalDocument}
-                />
-                <Route
-                  exact
-                  path="/external-documents/:id"
-                  component={ExternalDocument}
-                />
-                <Route
-                  exact
-                  path="/folders"
-                  component={Folders}
-                />
-                
-              </Switch>
-            </Content>
-          </Layout>
+            </Button> */}
+          <SideMenu />
+        </Sider>
+        <Layout style={{}}>
+          {/* <div className="breadcrumb-container">
+            <Breadcrumb>
+              <Breadcrumb.Item>
+              <a href="/news">الأخبار</a>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <a href="">Courses</a>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>Course Name</Breadcrumb.Item>
+            </Breadcrumb>
+          </div> */}
+          <Content
+            className="site-layout-background"
+            style={{
+              padding: 24,
+              margin: 0,
+              minHeight: 280,
+            }}
+          >
+
+            <Switch>
+              <Route exact path={"/"} component={News} />
+              <Route path={"/news"} component={News} />
+              <Route path={"/photos"} component={Photos} />
+              <Route path={"/videos"} component={Videos} />
+              <Route path={"/contacts"} component={Contacts} />
+              <Route path={"/jobs"} component={Jobs} />
+              <Route path={"/internal-jobs"} component={Internaljobs} />
+             
+            </Switch>
+          </Content>
         </Layout>
       </Layout>
-    );
-  }
+    </Layout>
+  );
 }
 
 export default MainLayout;

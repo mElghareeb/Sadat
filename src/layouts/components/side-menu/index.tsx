@@ -3,64 +3,80 @@ import { Link } from 'react-router-dom';
 import { I18n } from 'react-redux-i18n';
 import { Badge, Avatar, Popover, Menu, Button } from 'antd';
 import {
-    PlusSquareFilled, ArrowDownOutlined, ArrowUpOutlined, HistoryOutlined, UserOutlined, RightCircleOutlined, FolderOutlined 
+    PlusSquareFilled, ArrowDownOutlined, ArrowUpOutlined, HistoryOutlined, UserOutlined, RightCircleOutlined, FolderOutlined
 } from '@ant-design/icons';
-import NewDocumentModal from '../new-document-modal';
 
 class SideMenu extends React.Component {
     state = {
         showNewDocument: false,
     };
 
-    showNewDocumentModal = (showNewDocument) => {
-        this.setState({ showNewDocument });
-    }
+
     render() {
         return (
             <div>
 
                 <Menu
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
+                    // defaultSelectedKeys={['1']}
+                    // defaultOpenKeys={['sub1']}
                     mode="inline"
                     className='app-side-menu'
                 >
-
-                    <Menu.Item className='new-document-btn' key="0" icon={<PlusSquareFilled style={{ fontSize: '22px'}}/>} onClick={() => this.showNewDocumentModal(true)}>
-                        <div className="new-document-btn-container">{I18n.t("dashboard.newDocument")} <RightCircleOutlined /></div>
-                    </Menu.Item>
-
-                    <Menu.Item key="1" icon={<Link to='/internal-documents'><div className='side-icon-container'><ArrowDownOutlined /></div></Link>}>
-                        <Link to='/internal-documents'>
-                        <div className="new-document-btn-container">{I18n.t("dashboard.internalDocuments")} <Badge count={4} /></div>
+                    <Menu.Item>
+                        <Link to='/news'>
+                            <div className="menu-item-container">
+                                <img src="/public/assets/images/home.png" alt="" />
+                                <div className="title">الاخبار</div>
+                            </div>
                         </Link>
                     </Menu.Item>
 
-                    <Menu.Item key="2" icon={<Link to='/external-documents'><div className='side-icon-container'><ArrowUpOutlined /></div></Link>}>
-                        <Link to='/external-documents'>
-                        <div className="new-document-btn-container">{I18n.t("dashboard.externalDocuments")} <Badge count={4} /></div>
-                    </Link>
+                    <Menu.Item>
+                        <Link to='/photos'>
+                            <div className="menu-item-container">
+                                <img src="/public/assets/images/side2.png" alt="" />
+                                <div className="title">الصور</div>
+                            </div>
+                        </Link>
                     </Menu.Item>
 
-                    <Menu.Item key="3" icon={<Link to='/folders'><div className='side-icon-container'><FolderOutlined /></div></Link>}>
-                        <Link to='/folders'>
-                        <div className="new-document-btn-container">{I18n.t("dashboard.folders")} <Badge count={4} /></div>
-                    </Link>
+                    <Menu.Item>
+                        <Link to='/videos'>
+                            <div className="menu-item-container">
+                                <img src="/public/assets/images/side3.png" alt="" />
+                                <div className="title">الفيديو</div>
+                            </div>
+                        </Link>
                     </Menu.Item>
 
-                    <Menu.Item key="4" icon={<Link to='/history'><HistoryOutlined style={{ fontSize: '20px'}}/></Link>}>
-                        <Link to='/history'>
-                        {I18n.t("dashboard.history")}
-                    </Link>
+                    <Menu.Item>
+                        <Link to='/contacts'>
+                            <div className="menu-item-container">
+                                <img src="/public/assets/images/side4.png" alt="" />
+                                <div className="title">تواصل معنا</div>
+                            </div>
+                        </Link>
                     </Menu.Item>
 
-                    <Menu.Item key="5" icon={<Link to='/users'><UserOutlined style={{ fontSize: '20px'}}/></Link>}>
-                        <Link to='/users'>
-                        {I18n.t("dashboard.users")}
-                    </Link>
+                    <Menu.Item>
+                        <Link to='/jobs'>
+                            <div className="menu-item-container">
+                                <img src="/public/assets/images/side5.png" alt="" />
+                                <div className="title">طلبات الوظائف</div>
+                            </div>
+                        </Link>
                     </Menu.Item>
+                    
+                    <Menu.Item>
+                        <Link to='/internal-jobs'>
+                            <div className="menu-item-container">
+                                <img src="/public/assets/images/side6.png" alt="" />
+                                <div className="title">الوظائف</div>
+                            </div>
+                        </Link>
+                    </Menu.Item>
+
                 </Menu>
-                <NewDocumentModal showModal={this.state.showNewDocument} showNewDocumentModal={this.showNewDocumentModal} />
             </div>
 
         );

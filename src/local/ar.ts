@@ -3,29 +3,14 @@ const ar = {
 	
 	reports: 'التقارير',
 	login: {
-		userName: 'اسم المستخدم / الايميل',
+		userName: 'اسم المستخدم',
 		password: 'كلمة المرور',
 		submit: 'دخول',
-		rememberMe:'تذكرني'
-	},
-	dashboard:{
-		dashboard: 'داش بورد',
-		newDocument: 'ملف جديد',
-		externalDocuments: 'الملفات الخارجية',
-		internalDocuments: 'الملفات الداخلية',
-		totalDocuments: 'كل الملفات',
-		viewAll: 'مشاهدة الكل',
-		history: 'سجلات',
-		users: 'مستخدمين',
-		folders:'مجلدات'
+		rememberMe:'تذكرني',
+		forgetPassword: 'نسيت كلمة المرور؟'
 
 	},
-	table:{
-		from: 'من',
-		subject:'اسم الملف',
-		date:'التاريخ',
-		Priorty:'الاولوية',
-	}
+
 	
 };
 

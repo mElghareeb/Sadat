@@ -1,12 +1,15 @@
 $mobileSize:480px;
 $tabletSize:768px;
+$primaryColor:#4FB4B3;
 html{
     @media(max-width:$tabletSize){
         overflow-x: hidden !important;
     }
 }
-@import '../../layouts/components/header/style.scss';
+
 @import '../../layouts/login-layout.scss';
 @import '../../layouts/main-layout.scss';
-@import '../../layouts/components/side-menu/side-menu.scss'
+@import '../../layouts/components/header/style.scss';
+@import '../../layouts/components/side-menu/side-menu.scss';
+@import '../../containers/news/style.scss';
 

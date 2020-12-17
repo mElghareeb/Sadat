@@ -5,8 +5,25 @@
   margin: 16px 28px 16px 0;
   float: left;
 }
+
+aside.ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-collapsed.site-layout-background{
+  width: 100px !important;
+  max-width: 100px !important;
+  flex: 0 0 100px !important;
+}
+
+.breadcrumb-container{
+  background-color: rgba(79, 180, 179, 0.4);
+  padding: 10px 20px;
+  .ant-breadcrumb{
+    span, a{
+      color: #FFF;
+    }
+  }
+}
+
 .ant-layout-sider-children {
-  background-color: #333;
+  background-color: #284558;
   .side-menu-controller-btn {
     width: 25px;
     height: 30px;

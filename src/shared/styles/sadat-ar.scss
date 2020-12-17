@@ -10,5 +10,5 @@ font-family: 'Cairo', sans-serif !important;
     padding-#{$end}:20px;
     background: transparent url('/public/assets/images/en.png') no-repeat $end center;
 }
-@import 'main.scss';
+@import './main.scss';
 
