@@ -45,9 +45,9 @@ function Header() {
   );
   const profile = (
     <div>
-      <p>profile</p>
+      {/* <p>profile</p> */}
       <p>
-        <a onClick={logout}>Logout</a>
+        <a onClick={logout}>الخروج</a>
       </p>
     </div>
   );
@@ -55,14 +55,14 @@ function Header() {
     <header className="header-container">
       <div className="right-side">
         <div className="logo-container">
-          <img src="/public/assets/images/logo.png" alt="" className="logo" />
+          <img src="/public/assets/images/logo2.jpeg" alt="" className="logo" />
         </div>
       </div>
       <div className="controls-container">
-        <div className="search-bar-container">
+        {/* <div className="search-bar-container">
           <Search placeholder="search" onSearch={onSearch} enterButton />
-        </div>
-        <Popover
+        </div> */}
+        {/* <Popover
           className="control-btn"
           placement="bottom"
           content={messages}
@@ -77,9 +77,9 @@ function Header() {
             size={40}
             icon={<MessageOutlined />}
           />
-        </Popover>
+        </Popover> */}
 
-        <Popover
+        {/* <Popover
           className="control-btn"
           placement="bottom"
           content={notifications}
@@ -97,7 +97,7 @@ function Header() {
             />
             <a href="#" className="head-example" />
           </Badge>
-        </Popover>
+        </Popover> */}
 
         <Popover
           className="control-btn"
