@@ -10,7 +10,7 @@ function LoginLayout() {
             <header className="header-container">
                 <div className="right-side">
                     <div className="logo-container">
-                        <img src="/public/assets/images/logo.png" alt="" className="logo" />
+                        <img src="/public/assets/images/logo2.jpeg" alt="" className="logo" />
                     </div>
 
                 </div>
@@ -25,7 +25,7 @@ function LoginLayout() {
                 <div style={{ width: 400, marginTop: 100 }}>
                     <div className="login-title-container">
                         <div className="login-title">
-                            Login
+                            تسجيل الدخول
                         </div>
                         <div className="login-line">
                             

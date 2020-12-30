@@ -11,13 +11,14 @@ export function photosReducer(
         case "RESET_PHOTOS":
             console.log('RESEEEEEET')
             return {
-                state: initPhotos,
+                ...state,
+                data: []
             };
         case "SET_PHOTOS":
             return {
                 ...state,
                 data: action.photos.data,
-                count: action.photos.count,
+                count: action.photos.count> 0 ? action.photos.count : state.count,
             };
         case "PHOTOS_LOADING":
             return {

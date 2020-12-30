@@ -11,13 +11,14 @@ export function schoolNewsReducer(
         case "RESET_SCHOOL_NEWS":
             console.log('RESEEEEEET')
             return {
-                state: initSchoolNews,
+                ...state,
+                data: [],
             };
         case "SET_SCHOOL_NEWS":
             return {
                 ...state,
                 data: action.schoolNews.data,
-                count: action.schoolNews.count,
+                count: action.schoolNews.count> 0 ? action.schoolNews.count : state.count,
             };
         case "SCHOOL_NEWS_LOADING":
             return {

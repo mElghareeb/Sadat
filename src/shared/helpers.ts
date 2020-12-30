@@ -6,7 +6,7 @@ export const getCurrentLocale = (state) => (state.i18n as any).locale;
 axios.defaults.headers.common['lang'] = cookies.get('Language') ? cookies.get('Language') : 'en';
 axios.defaults.headers.common['Accept'] = "application/json";
 axios.defaults.headers.common['Content-Type'] = "application/json";
-cookies.get('accessToken') && (axios.defaults.headers.common['x-token'] = cookies.get('accessToken'));
+localStorage.getItem(`accessToken/${window.location.pathname.split('/')[1]}`) && (axios.defaults.headers.common['x-token'] = localStorage.getItem(`accessToken/${window.location.pathname.split('/')[1]}`));
 console.log('token')
 
 export const updateDocumentLanguage = (lang) => {

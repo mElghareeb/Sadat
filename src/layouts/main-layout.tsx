@@ -20,7 +20,9 @@ const MainLayout = () => {
   const [collapsed, setCollapsed] = useState(true)
   const { Content, Sider } = Layout;
   useEffect(() => {
-    if (!cookies.get("accessToken")) {
+    if (!localStorage.getItem(`accessToken/${window.location.pathname.split('/')[1]}`)) {
+      console.log('accessToken--000--', localStorage.getItem(`accessToken/${window.location.pathname.split('/')[1]}`))
+
       window.location.href = "/login?origin=" + window.location.pathname;
     } else {
       // dispatch(getProfileAction());
@@ -71,13 +73,13 @@ const MainLayout = () => {
           >
 
             <Switch>
-              <Route exact path={"/"} component={News} />
-              <Route path={"/news"} component={News} />
-              <Route path={"/photos"} component={Photos} />
-              <Route path={"/videos"} component={Videos} />
-              <Route path={"/contacts"} component={Contacts} />
-              <Route path={"/jobs"} component={Jobs} />
-              <Route path={"/internal-jobs"} component={Internaljobs} />
+              <Route exact path={["/mostakbal/", "/nasr-american/"]} component={News} />
+              <Route path={["/mostakbal/news", "/nasr-american/news"]} component={News} />
+              <Route path={["/mostakbal/photos", "/nasr-american/photos"]} component={Photos} />
+              <Route path={["/mostakbal/videos", "/nasr-american/videos"]} component={Videos} />
+              <Route path={["/mostakbal/contacts", "/nasr-american/contacts"]} component={Contacts} />
+              <Route path={["/mostakbal/jobs", "/nasr-american/contacts"]} component={Jobs} />
+              <Route path={["/mostakbal/internal-jobs", "/nasr-american/internal-jobs"]} component={Internaljobs} />
              
             </Switch>
           </Content>

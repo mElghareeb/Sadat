@@ -1,55 +1,56 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Avatar, Spin, Row, Col, Button, Modal, Upload, Input } from 'antd';
+import { Card, Avatar, Spin, Row, Col, Button, Modal, Upload, Input, Pagination } from 'antd';
 import { EditOutlined, DeleteFilled, CloudUploadOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import './style.scss'
 import { useDispatch, useSelector } from "react-redux";
-import { addContact, deleteContactAction, getContactsAction } from "./actions";
+import {  deleteContactAction, getContactsAction } from "./actions";
 import { Link } from 'react-router-dom';
 import { I18n } from 'react-redux-i18n';
 import renderHTML from 'react-render-html';
 
 
 
-function Contacts() {
+const Contacts=()=> {
     const { Meta } = Card;
     const dispatch = useDispatch();
     const [visible, setVisible] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
     const contacts: any = useSelector((state) => state.contacts);
     const [contactUrl, setContactUrl] = useState('');
     const [imageTitle, setImageTitle] = useState('')
 
 
-    const handleUpload = async () => {
-        //   e.preventDefault();
+    // const handleUpload = async () => {
+    //     //   e.preventDefault();
 
-        console.log('uplooood')
-        dispatch(addContact(imageTitle, contactUrl))
-    };
+    //     console.log('uplooood')
+    //     dispatch(addContact(imageTitle, contactUrl))
+    // };
 
     useEffect(() => {
-        dispatch(getContactsAction());
+        dispatch(getContactsAction(currentPage));
     }, []);
 
     useEffect(() => {
         console.log('contacts-----', contacts.data)
     }, [contacts])
 
-    const handleOk = e => {
-        console.log(e);
-        if (imageTitle.length) {
-            handleUpload();
-            setVisible(false)
-        }
-        else {
-            alert('الرجاء كتابة عنوان للصورة')
-        }
-    };
+    // const handleOk = e => {
+    //     console.log(e);
+    //     if (imageTitle.length) {
+    //         handleUpload();
+    //         setVisible(false)
+    //     }
+    //     else {
+    //         alert('الرجاء كتابة عنوان للصورة')
+    //     }
+    // };
 
-    const handleCancel = e => {
-        console.log(e);
-        setVisible(false)
+    // const handleCancel = e => {
+    //     console.log(e);
+    //     setVisible(false)
 
-    };
+    // };
 
     function confirm(contactId) {
         console.log('confi')
@@ -63,6 +64,13 @@ function Contacts() {
                 dispatch(deleteContactAction(contactId));
             }
         });
+    }
+
+    
+    function onChange (page){
+        console.log('console.log(page);', page);
+        setCurrentPage(page);
+        dispatch(getContactsAction(page));
     }
 
     return (
@@ -108,7 +116,7 @@ function Contacts() {
                 )}
 
 
-            <Modal
+            {/* <Modal
                 title="ارفق الرسالة بالعنوان"
                 visible={visible}
                 onOk={handleOk}
@@ -120,7 +128,9 @@ function Contacts() {
                     <Input placeholder="اكتب رابط الرسالة" value={contactUrl} onChange={(e) => setContactUrl(e.currentTarget.value)} />
                     
                 </div>
-            </Modal>
+            </Modal> */}
+            
+{(contacts.count> 10) && <Pagination current={currentPage} onChange={(page)=>onChange(page)} total={contacts.count} />}
 
         </div>
     );

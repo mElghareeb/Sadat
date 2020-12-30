@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Avatar, Spin, Row, Col, Button, Modal, Upload, Input } from 'antd';
+import { Card, Avatar, Spin, Row, Col, Button, Modal, Upload, Input, Pagination } from 'antd';
 import { EditOutlined, DeleteFilled, CloudUploadOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import './style.scss'
 import { useDispatch, useSelector } from "react-redux";
@@ -16,6 +16,7 @@ function Photos() {
     const [visible, setVisible] = useState(false);
     const photos: any = useSelector((state) => state.photos);
     const [image, setImage] = useState({ preview: "", raw: "" });
+    const [currentPage, setCurrentPage] = useState(1);
     const [imageTitle, setImageTitle] = useState('')
     const handleChange = e => {
         if (e.target.files.length) {
@@ -30,12 +31,14 @@ function Photos() {
         //   e.preventDefault();
 
         console.log('uplooood')
+        setCurrentPage(1);
+
         dispatch(addPhoto(imageTitle, image))
     };
 
     const fileList = [];
     useEffect(() => {
-        dispatch(getPhotosAction());
+        dispatch(getPhotosAction(currentPage));
     }, []);
 
     useEffect(() => {
@@ -68,9 +71,17 @@ function Photos() {
             okText: 'حذف الصورة',
             cancelText: 'رجوع',
             onOk() {
+                setCurrentPage(1);
+
                 dispatch(deletePhotoAction(photoId));
             }
         });
+    }
+
+    function onChange (page){
+        console.log('console.log(page);', page);
+        setCurrentPage(page);
+        dispatch(getPhotosAction(page));
     }
 
     return (
@@ -151,6 +162,7 @@ function Photos() {
                     {/* <button onClick={handleUpload}>Upload</button> */}
                 </div>
             </Modal>
+            {(photos.count> 10) && <Pagination current={currentPage} onChange={(page)=>onChange(page)} total={photos.count} />}
 
         </div>
     );

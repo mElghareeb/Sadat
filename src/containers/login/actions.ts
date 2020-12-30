@@ -15,15 +15,17 @@ export function authenticateUserAction(username, password) {
         password: password,
       })
       .then((res) => {
-        console.log('REEEES', res)
-        cookies.set("accessToken", res.data.data.token, { path: "/" });
+        console.log('REEEES', origin)
         axios.defaults.headers.common["x-token"] =
          res.data.access;
         // dispatch(componentLoading(false));
         window["__insp"] && window["__insp"].push(["identify", username]);
         let params = new URLSearchParams(window.location.search);
         let origin = params.get("origin");
+        console.log(origin.split('/'))
+        localStorage.setItem(`accessToken/${origin.split('/')[1]}`,  res.data.data.token);
         window.location.href = origin ? origin : "/";
+
       })
       .catch((err) => {
         // dispatch(componentLoading(false));

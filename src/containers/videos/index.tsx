@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Avatar, Spin, Row, Col, Button, Modal, Upload, Input } from 'antd';
+import { Card, Avatar, Spin, Row, Col, Button, Modal, Upload, Input, Pagination } from 'antd';
 import { EditOutlined, DeleteFilled, CloudUploadOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import './style.scss'
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +14,7 @@ function Videos() {
     const { Meta } = Card;
     const dispatch = useDispatch();
     const [visible, setVisible] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
     const videos: any = useSelector((state) => state.videos);
     const [videoUrl, setVideoUrl] = useState('');
     const [imageTitle, setImageTitle] = useState('')
@@ -28,7 +29,7 @@ function Videos() {
 
     const fileList = [];
     useEffect(() => {
-        dispatch(getVideosAction());
+        dispatch(getVideosAction(currentPage));
     }, []);
 
     useEffect(() => {
@@ -64,6 +65,12 @@ function Videos() {
                 dispatch(deleteVideoAction(videoId));
             }
         });
+    }
+
+    function onChange (page){
+        console.log('console.log(page);', page);
+        setCurrentPage(page);
+        dispatch(getVideosAction(page));
     }
 
     return (
@@ -125,6 +132,7 @@ function Videos() {
                     
                 </div>
             </Modal>
+            {(videos.count> 10) && <Pagination current={currentPage} onChange={(page)=>onChange(page)} total={videos.count} />}
 
         </div>
     );

@@ -35,7 +35,7 @@ class App extends React.Component<props, {}> {
     <ConfigProvider direction={this.props.lang == 'ar'? 'rtl' : 'ltr'}>
     <Router history={history}>
 				<Switch>
-					<Route exact path={['/forget-password', "/login",'/change-password', '/account/verify', '/account/activate']} component={LoginLayout} />
+					<Route exact path={["/login"]} component={LoginLayout} />
 					<Route  component={MainLayout} />
 				</Switch>
 			</Router>

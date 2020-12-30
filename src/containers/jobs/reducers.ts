@@ -11,13 +11,15 @@ export function jobsReducer(
         case "RESET_JOBS":
             console.log('RESEEEEEET')
             return {
-                state: initJobs,
+                ...state,
+                data: initJobs.data,
             };
         case "SET_JOBS":
+            console.log('action.jobs.count', action.jobs.count, state.count)
             return {
                 ...state,
                 data: action.jobs.data,
-                count: action.jobs.count,
+                count: action.jobs.count> 0 ? action.jobs.count : state.count,
             };
         case "JOBS_LOADING":
             return {

@@ -2,8 +2,7 @@ import { API_URLS } from "../../shared/servicesURLs";
 import axios from 'axios';
 import { cookies } from '../../shared/helpers';
 
-const token = cookies.get('accessToken')
-console.log('token--->', token)
+
 
 function resetPhotos() {
   return {
@@ -25,14 +24,14 @@ function setPhotos(photos) {
   };
 }
 
-export function getPhotosAction() {
+export function getPhotosAction(page) {
 
   return (dispatch) => {
     dispatch(resetPhotos());
     dispatch(photosLoading(true));
 
     axios
-      .get(API_URLS.PHOTOSLIST)
+      .get(API_URLS.PHOTOSLIST + page)
       .then((res) => {
         console.log('res.data--', res.data)
         dispatch(photosLoading(false));
@@ -54,7 +53,7 @@ export function deletePhotoAction(photoID) {
       .delete(API_URLS.PHOTODELETE + '/' + photoID)
       .then((res) => {
         console.log('res.data--', res.data);
-        dispatch(getPhotosAction());
+        dispatch(getPhotosAction(1));
       })
       .catch((err) => {
         photosLoading(false);
@@ -64,6 +63,8 @@ export function deletePhotoAction(photoID) {
 }
 
 export function addPhoto(title, photo) {
+  const token = localStorage.getItem(`accessToken/${window.location.pathname.split('/')[1]}`);
+console.log('token--->', token, `accessToken/${window.location.pathname.split('/')[1]}`)
   return (dispatch) => {
     console.log("fooorm", title, photo);
     // dispatch(componentError(false, null));
@@ -77,7 +78,7 @@ export function addPhoto(title, photo) {
 
     dispatch(photosLoading(true));
     axios
-      .post("http://157.230.113.8/mostakbal/gallery/add",
+      .post(API_URLS.PHOTOSAdd,
         formData
         , {
           headers: {
@@ -88,7 +89,7 @@ export function addPhoto(title, photo) {
         })
       .then((res) => {
         console.log('REEEES', res)
-        dispatch(getPhotosAction());
+        dispatch(getPhotosAction(1));
         // dispatch(componentLoading(false));
 
       })

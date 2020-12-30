@@ -2,8 +2,7 @@ import { API_URLS } from "../../shared/servicesURLs";
 import axios from 'axios';
 import { cookies } from '../../shared/helpers';
 
-const token = cookies.get('accessToken')
-console.log('token--->', token)
+
 
 function resetVideos() {
   return {
@@ -25,14 +24,14 @@ function setVideos(videos) {
   };
 }
 
-export function getVideosAction() {
+export function getVideosAction(page) {
 
   return (dispatch) => {
     dispatch(resetVideos());
     dispatch(videosLoading(true));
 
     axios
-      .get(API_URLS.VIDEOSLIST)
+      .get(API_URLS.VIDEOSLIST + page)
       .then((res) => {
         console.log('res.data--', res.data)
         dispatch(videosLoading(false));
@@ -54,7 +53,7 @@ export function deleteVideoAction(videosID) {
       .delete(API_URLS.VIDEODELETE + '/' + videosID)
       .then((res) => {
         console.log('res.data--', res.data);
-        dispatch(getVideosAction());
+        dispatch(getVideosAction(1));
       })
       .catch((err) => {
         videosLoading(false);
@@ -64,6 +63,8 @@ export function deleteVideoAction(videosID) {
 }
 
 export function addVideo(title, videoUrl) {
+  const token = localStorage.getItem(`accessToken/${window.location.pathname.split('/')[1]}`);
+console.log('token--->', token)
   return (dispatch) => {
   
     // dispatch(componentError(false, null));
@@ -84,7 +85,7 @@ export function addVideo(title, videoUrl) {
         })
       .then((res) => {
         console.log('REEEES', res)
-        dispatch(getVideosAction());
+        dispatch(getVideosAction(1));
         // dispatch(componentLoading(false));
 
       })

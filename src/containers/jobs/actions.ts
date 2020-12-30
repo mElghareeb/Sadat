@@ -2,8 +2,6 @@ import { API_URLS } from "../../shared/servicesURLs";
 import axios from 'axios';
 import { cookies } from '../../shared/helpers';
 
-const token = cookies.get('accessToken')
-console.log('token--->', token)
 
 function resetJobs() {
   return {
@@ -25,14 +23,14 @@ function setJobs(jobs) {
   };
 }
 
-export function getJobsAction() {
+export function getJobsAction(page) {
 
   return (dispatch) => {
     dispatch(resetJobs());
     dispatch(jobsLoading(true));
 
     axios
-      .get(API_URLS.JOBSLIST)
+      .get(API_URLS.JOBSLIST + page)
       .then((res) => {
         console.log('res.data--', res.data)
         dispatch(jobsLoading(false));
@@ -54,10 +52,27 @@ export function deleteJobAction(jobsID) {
       .delete(API_URLS.JOBDELETE + '/' + jobsID)
       .then((res) => {
         console.log('res.data--', res.data);
-        dispatch(getJobsAction());
+        dispatch(getJobsAction(1));
       })
       .catch((err) => {
         jobsLoading(false);
+        console.log(err);
+      });
+  };
+}
+
+export function downloadJobAction(jobsID) {
+
+  return (dispatch) => {
+    // dispatch(jobsLoading(true));
+
+    axios
+      .get(API_URLS.DOWNLOADCV + '/' + jobsID)
+      .then((res) => {
+        console.log('res.data--', res.data);
+      })
+      .catch((err) => {
+        // jobsLoading(false);
         console.log(err);
       });
   };

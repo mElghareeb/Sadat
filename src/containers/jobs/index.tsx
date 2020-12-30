@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Avatar, Spin, Row, Col, Button, Modal, Upload, Input } from 'antd';
-import { EditOutlined, DeleteFilled, CloudUploadOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+import { Card, Avatar, Spin, Row, Col, Button, Modal, Upload, Input, Pagination } from 'antd';
+import { EditOutlined, DeleteFilled, DownloadOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import './style.scss'
 import { useDispatch, useSelector } from "react-redux";
-import { addJob, deleteJobAction, getJobsAction } from "./actions";
+import { addJob, deleteJobAction, downloadJobAction, getJobsAction } from "./actions";
 import { Link } from 'react-router-dom';
 import { I18n } from 'react-redux-i18n';
 import renderHTML from 'react-render-html';
@@ -14,6 +14,7 @@ function Jobs() {
     const { Meta } = Card;
     const dispatch = useDispatch();
     const [visible, setVisible] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
     const jobs: any = useSelector((state) => state.jobs);
     const [jobUrl, setJobUrl] = useState('');
     const [imageTitle, setImageTitle] = useState('')
@@ -21,11 +22,11 @@ function Jobs() {
 
 
     useEffect(() => {
-        dispatch(getJobsAction());
+        dispatch(getJobsAction(currentPage));
     }, []);
 
     useEffect(() => {
-        console.log('jobs-----', jobs.data)
+        console.log('jobs-----', jobs.data, Math.ceil(jobs.count / 10))
     }, [jobs])
 
 
@@ -43,6 +44,16 @@ function Jobs() {
         });
     }
 
+    function downloadCV(jobId){
+        dispatch(downloadJobAction(jobId));
+    }
+
+
+    function onChange (page){
+        console.log('console.log(page);', page);
+        setCurrentPage(page);
+        dispatch(getJobsAction(page));
+    }
     return (
 
         <div className="page-container">
@@ -85,16 +96,16 @@ function Jobs() {
                                       <p><span style={{color:'#000', fontWeight:'bold'}}> عدد سنين الخبرة:</span> {jobsItem.experienceYears}</p>
                                       <p><span style={{color:'#000', fontWeight:'bold'}}> الجنسية:</span> {jobsItem.nationality}</p>
                                       <p><span style={{color:'#000', fontWeight:'bold'}}> رقم الهوية:</span> {jobsItem.identity}</p>
-                                    </Card>
+                                      <Button type="primary" shape="round" icon={<DownloadOutlined />} size='large'  onClick={()=>downloadCV(jobsItem.id)}>تحميل</Button>
+                                         </Card>
                                 </Col>
                             )
                         })}
                     </Row>
                 )}
 
-
-           
-        </div>
+{(jobs.count> 10) && <Pagination current={currentPage} onChange={(page)=>onChange(page)} total={jobs.count} />}
+</div>
     );
 
 }

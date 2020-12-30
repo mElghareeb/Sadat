@@ -23,7 +23,7 @@ class SideMenu extends React.Component {
                     className='app-side-menu'
                 >
                     <Menu.Item>
-                        <Link to='/news'>
+                        <Link to={`/${window.location.pathname.split('/')[1]}/news`}>
                             <div className="menu-item-container">
                                 <img src="/public/assets/images/home.png" alt="" />
                                 <div className="title">الاخبار</div>
@@ -32,7 +32,7 @@ class SideMenu extends React.Component {
                     </Menu.Item>
 
                     <Menu.Item>
-                        <Link to='/photos'>
+                        <Link to={`/${window.location.pathname.split('/')[1]}/photos`}>
                             <div className="menu-item-container">
                                 <img src="/public/assets/images/side2.png" alt="" />
                                 <div className="title">الصور</div>
@@ -41,7 +41,7 @@ class SideMenu extends React.Component {
                     </Menu.Item>
 
                     <Menu.Item>
-                        <Link to='/videos'>
+                        <Link to={`/${window.location.pathname.split('/')[1]}/videos`}>
                             <div className="menu-item-container">
                                 <img src="/public/assets/images/side3.png" alt="" />
                                 <div className="title">الفيديو</div>
@@ -50,7 +50,7 @@ class SideMenu extends React.Component {
                     </Menu.Item>
 
                     <Menu.Item>
-                        <Link to='/contacts'>
+                        <Link to={`/${window.location.pathname.split('/')[1]}/contacts`}>
                             <div className="menu-item-container">
                                 <img src="/public/assets/images/side4.png" alt="" />
                                 <div className="title">تواصل معنا</div>
@@ -59,7 +59,7 @@ class SideMenu extends React.Component {
                     </Menu.Item>
 
                     <Menu.Item>
-                        <Link to='/jobs'>
+                        <Link to={`/${window.location.pathname.split('/')[1]}/jobs`}>
                             <div className="menu-item-container">
                                 <img src="/public/assets/images/side5.png" alt="" />
                                 <div className="title">طلبات الوظائف</div>
@@ -68,7 +68,7 @@ class SideMenu extends React.Component {
                     </Menu.Item>
                     
                     <Menu.Item>
-                        <Link to='/internal-jobs'>
+                        <Link to={`/${window.location.pathname.split('/')[1]}/internal-jobs`}>
                             <div className="menu-item-container">
                                 <img src="/public/assets/images/side6.png" alt="" />
                                 <div className="title">الوظائف</div>

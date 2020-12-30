@@ -2,8 +2,6 @@ import { API_URLS } from "../../shared/servicesURLs";
 import axios from 'axios';
 import { cookies } from '../../shared/helpers';
 
-const token = cookies.get('accessToken')
-console.log('token--->', token)
 
 function resetInternalJobs() {
   return {
@@ -48,20 +46,20 @@ export function getInternalJobsAction() {
 
 export function deleteInternalJobAction(internalJobsID) {
 console.log('deleteInternalJobAction')
-  // return (dispatch) => {
-  //   dispatch(internalJobsLoading(true));
+  return (dispatch) => {
+    dispatch(internalJobsLoading(true));
 
-  //   axios
-  //     .delete(API_URLS.INTERNALJOBDELETE + '/' + internalJobsID)
-  //     .then((res) => {
-  //       console.log('res.data--', res.data);
-  //       dispatch(getInternalJobsAction());
-  //     })
-  //     .catch((err) => {
-  //       internalJobsLoading(false);
-  //       console.log(err);
-  //     });
-  // };
+    axios
+      .delete(API_URLS.INTERNALJOBDELETE + '/' + internalJobsID)
+      .then((res) => {
+        console.log('res.data--', res.data);
+        dispatch(getInternalJobsAction());
+      })
+      .catch((err) => {
+        internalJobsLoading(false);
+        console.log(err);
+      });
+  };
 }
 
 export function addInternalJob(name) {

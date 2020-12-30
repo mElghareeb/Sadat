@@ -17,7 +17,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     console.log('useEffect')
-    if (cookies.get('accessToken')) {
+    if (localStorage.getItem(`accessToken/${window.location.pathname.split('/')[1]}`)) {
       let params = new URLSearchParams(window.location.search);
       let origin = params.get('origin');
       if (origin) {
@@ -66,9 +66,9 @@ const LoginForm = () => {
         <Input.Password />
       </Form.Item>
 
-      <div className="forget-password-container">
+      {/* <div className="forget-password-container">
         <a href="/forget">{I18n.t("login.forgetPassword")}</a>
-      </div>
+      </div> */}
 
       <Form.Item {...tailLayout}>
         <Button className='login-btn' type="primary" htmlType="submit">

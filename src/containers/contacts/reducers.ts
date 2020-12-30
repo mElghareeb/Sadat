@@ -11,13 +11,14 @@ export function contactsReducer(
         case "RESET_CONTACTS":
             console.log('RESEEEEEET')
             return {
-                state: initContacts,
+                ...state,
+                data: [],
             };
         case "SET_CONTACTS":
             return {
                 ...state,
                 data: action.contacts.data,
-                count: action.contacts.count,
+                count: action.contacts.count> 0 ? action.contacts.count : state.count,
             };
         case "CONTACTS_LOADING":
             return {

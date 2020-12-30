@@ -15,7 +15,9 @@ function Header() {
   const dispatch = useDispatch();
   const profileData = useSelector((state) => state.profile);
   useEffect(() => {
-    if (!cookies.get("accessToken")) {
+    if (!localStorage.getItem(`accessToken/${window.location.pathname.split('/')[1]}`)) {
+      console.log('accessToken--000--2222', localStorage.getItem(`accessToken/${window.location.pathname.split('/')[1]}`), window.location.pathname, window.location.pathname.split('/')[1])
+      
       window.location.href = "/login?origin=" + window.location.pathname;
     } else {
       // dispatch(getProfileAction());
@@ -26,6 +28,7 @@ function Header() {
   const onSearch = value => console.log(value);
 
   const logout = () => {
+    localStorage.removeItem(`accessToken/${window.location.pathname.split('/')[1]}`);
     cookies.remove("accessToken", { path: "/" });
     window.location.href = "/login";
 

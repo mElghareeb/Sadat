@@ -11,13 +11,14 @@ export function videosReducer(
         case "RESET_VIDEOS":
             console.log('RESEEEEEET')
             return {
-                state: initVideos,
+                ...state,
+                data: []
             };
         case "SET_VIDEOS":
             return {
                 ...state,
                 data: action.videos.data,
-                count: action.videos.count,
+                count: action.videos.count> 0 ? action.videos.count : state.count,
             };
         case "VIDEOS_LOADING":
             return {

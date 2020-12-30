@@ -2,8 +2,6 @@ import { API_URLS } from "../../shared/servicesURLs";
 import axios from "axios";
 import { cookies } from '../../shared/helpers';
 
-const token = cookies.get('accessToken')
-console.log('token--->', token)
 
 
 function resetSchoolNews() {
@@ -26,14 +24,14 @@ function setSchoolNews(schoolNews) {
   };
 }
 
-export function getSchoolNewsAction() {
+export function getSchoolNewsAction(page) {
   
   return (dispatch) => {
     dispatch(resetSchoolNews());
     dispatch(schoolNewsLoading(true));
 
     axios
-      .get(API_URLS.NEWSLIST)
+      .get(API_URLS.NEWSLIST + page)
       .then((res) => {
           console.log('res.data--', res.data)
         dispatch(schoolNewsLoading(false));
@@ -55,7 +53,7 @@ export function deleteNewsAction(newsID){
       .delete(API_URLS.NEWSELETE + '/' + newsID)
       .then((res) => {
         console.log('res.data--', res.data);
-        dispatch(getSchoolNewsAction());
+        dispatch(getSchoolNewsAction(1));
       })
       .catch((err) => {
         schoolNewsLoading(false);
@@ -66,6 +64,9 @@ export function deleteNewsAction(newsID){
 
 
 export function addNews(title, desc,  photo) {
+  
+const token = localStorage.getItem(`accessToken/${window.location.pathname.split('/')[1]}`);
+console.log('token--->', token)
   return (dispatch) => {
     console.log("fooorm", title, photo);
     // dispatch(componentError(false, null));
@@ -80,7 +81,7 @@ export function addNews(title, desc,  photo) {
 
     dispatch(schoolNewsLoading(true));
     axios
-      .post("http://157.230.113.8/mostakbal/news/add",
+      .post(API_URLS.NEWSADD,
         formData
         , {
           headers: {
@@ -91,7 +92,7 @@ export function addNews(title, desc,  photo) {
         })
       .then((res) => {
         console.log('REEEES', res)
-        dispatch(getSchoolNewsAction());
+        dispatch(getSchoolNewsAction(1));
         // dispatch(componentLoading(false));
 
       })

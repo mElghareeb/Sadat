@@ -61,6 +61,7 @@ function InternalJobs() {
             okText: 'حذف الوظيفة',
             cancelText: 'رجوع',
             onOk() {
+                console.log('internalJobId', internalJobId)
                 dispatch(deleteInternalJobAction(internalJobId));
             }
         });

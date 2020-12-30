@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Avatar, Spin, Row, Col, Button, Modal, Input } from 'antd';
+import { Card, Avatar, Spin, Row, Col, Button, Modal, Input, Pagination } from 'antd';
 import { EditOutlined, ExclamationCircleOutlined, DeleteFilled, CloudUploadOutlined } from '@ant-design/icons';
 import './style.scss'
 import { useDispatch, useSelector } from "react-redux";
@@ -16,16 +16,19 @@ function News() {
     const dispatch = useDispatch();
     const schoolNews: any = useSelector((state) => state.schoolNews);
     const [visible, setVisible] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [image, setImage] = useState({ preview: "", raw: "" });
+    const [newsTitle, setNewsTitle] = useState('')
+    const [newsDesc, setNewsDesc] = useState('')
+    
     useEffect(() => {
-        dispatch(getSchoolNewsAction());
+        dispatch(getSchoolNewsAction(currentPage));
     }, []);
 
     useEffect(() => {
         console.log('schoolNews-----', schoolNews.data)
     }, [schoolNews])
-    const [image, setImage] = useState({ preview: "", raw: "" });
-    const [newsTitle, setNewsTitle] = useState('')
-    const [newsDesc, setNewsDesc] = useState('')
+   
     
     const handleChange = e => {
         if (e.target.files.length) {
@@ -39,7 +42,8 @@ function News() {
     const handleUpload = async () => {
         //   e.preventDefault();
 
-        console.log('uplooood')
+        console.log('uplooood');
+        setCurrentPage(1);
         dispatch(addNews(newsTitle, newsDesc, image))
     };
 
@@ -71,9 +75,16 @@ function News() {
             okText: 'حذف الخبر',
             cancelText: 'رجوع',
             onOk() {
+                setCurrentPage(1);
                 dispatch(deleteNewsAction(newsId));
             }
         });
+    }
+
+    function onChange (page){
+        console.log('console.log(page);', page);
+        setCurrentPage(page);
+        dispatch(getSchoolNewsAction(page));
     }
 
     return (
@@ -123,6 +134,7 @@ function News() {
                         })}
                     </Row>
                 )}
+{(schoolNews.count> 10) && <Pagination current={currentPage} onChange={(page)=>onChange(page)} total={schoolNews.count} />}
 
             
 <Modal
