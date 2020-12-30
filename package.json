@@ -31,7 +31,7 @@
   "scripts": {
     "bundle": "webpack",
     "test": "react-scripts test",
-    "start": "webpack-dev-server --mode development --progress --hot",
+    "start": "webpack-dev-server --mode development --progress --hot --port 3002",
     "build": "webpack --mode production",
     "check-types": "tsc",
     "eject": "react-scripts eject"
