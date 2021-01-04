@@ -1,4 +1,4 @@
-const PREFIX = `http://157.230.113.8`;
+const PREFIX = `https://api.salakel-edu.com`;
 
 // const PREFIX = `/api/prod-svc/1.0`;
 let params = new URLSearchParams(window.location.search);

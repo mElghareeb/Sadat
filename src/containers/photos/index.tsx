@@ -109,7 +109,7 @@ function Photos() {
                                         }
                                         actions={[
                                             <div onClick={() => {
-                                                confirm(photosItem.photoId)
+                                                confirm(photosItem.id)
                                                 // dispatch(deletePhotoAction(photosItem.photoId));
                                             }}>
                                                 <DeleteFilled key="delete" color='#FF0000' onClick={() => {
