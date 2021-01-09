@@ -48,8 +48,18 @@ function Photos() {
     const handleOk = e => {
         console.log(e);
         if (imageTitle.length) {
-            handleUpload();
-            setVisible(false)
+            if(image.preview.length){
+                handleUpload();
+                setVisible(false);
+                setImage({
+                    preview: "",
+                    raw: ""
+                });
+                setImageTitle('');
+            }
+            else{
+                alert('الرجاءارفاق الصورة')
+            }
         }
         else {
             alert('الرجاء كتابة عنوان للصورة')

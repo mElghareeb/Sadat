@@ -52,8 +52,21 @@ function News() {
     const handleOk = e => {
         console.log(e);
         if (newsTitle.length && newsDesc.length) {
-            handleUpload();
-            setVisible(false)
+            console.log('image.preview',image.preview);
+            if(image.preview.length){
+                handleUpload();
+                setVisible(false);
+                setImage({
+                    preview: "",
+                    raw: ""
+                });
+                setNewsTitle('');
+                setNewsDesc('');
+            }
+            else{
+                alert('الرجاءارفاق الصورة')
+            }
+            
         }
         else {
             alert('الرجاء كتابة عنوان الخبر وتفاصيله')
@@ -144,7 +157,7 @@ function News() {
                 onCancel={handleCancel}
             >
                 <div>
-                    <Input placeholder="اكتب عنوان الخبر" value={newsTitle} onChange={(e) => setNewsTitle(e.currentTarget.value)} />
+                    <Input style={{marginBottom: 20}} placeholder="اكتب عنوان الخبر" value={newsTitle} onChange={(e) => setNewsTitle(e.currentTarget.value)} />
                     <br />
                     {/* <Input className='desc-input' placeholder="اكتب تفاصيل الخبر" value={newsDesc} onChange={(e) => setNewsDesc(e.currentTarget.value)} /> */}
                    <div className="desc-input-container">

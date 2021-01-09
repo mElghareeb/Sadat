@@ -3,7 +3,7 @@ import { Card, Avatar, Spin, Row, Col, Modal } from 'antd';
 // import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import './style.scss'
 import { useDispatch, useSelector } from "react-redux";
-import { addPhoto, getSchoolNewsAction } from "./actions";
+import { addPhoto } from "./actions";
 import ReactQuill from 'react-quill';
 import { OmitProps } from 'antd/lib/transfer/ListBody';
 
