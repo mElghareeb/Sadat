@@ -73,13 +73,13 @@ const MainLayout = () => {
           >
 
             <Switch>
-              <Route exact path={["/mostakbal/", "/nasr-american/"]} component={News} />
-              <Route path={["/mostakbal/news", "/nasr-american/news"]} component={News} />
-              <Route path={["/mostakbal/photos", "/nasr-american/photos"]} component={Photos} />
-              <Route path={["/mostakbal/videos", "/nasr-american/videos"]} component={Videos} />
-              <Route path={["/mostakbal/contacts", "/nasr-american/contacts"]} component={Contacts} />
-              <Route path={["/mostakbal/jobs", "/nasr-american/contacts"]} component={Jobs} />
-              <Route path={["/mostakbal/internal-jobs", "/nasr-american/internal-jobs"]} component={Internaljobs} />
+              <Route exact path={["/mostakbal/", "/nasr-american/", "/mashaal/", "/nasr-frosya/", "/nasr-hamraa/"]} component={News} />
+              <Route path={["/mostakbal/news", "/nasr-american/news", "/mashaal/news", "/nasr-frosya/news", "/nasr-hamraa/news"]} component={News} />
+              <Route path={["/mostakbal/photos", "/nasr-american/photos", "/mashaal/photos", "/nasr-frosya/photos", "/nasr-hamraa/photos"]} component={Photos} />
+              <Route path={["/mostakbal/videos", "/nasr-american/videos", "/mashaal/videos", "/nasr-frosya/videos", "/nasr-hamraa/videos"]} component={Videos} />
+              <Route path={["/mostakbal/contacts", "/nasr-american/contacts", "/mashaal/contacts", "/nasr-frosya/contacts", "/nasr-hamraa/contacts"]} component={Contacts} />
+              <Route path={["/mostakbal/jobs", "/nasr-american/jobs", "/mashaal/jobs", "/nasr-frosya/jobs", "/nasr-hamraa/jobs"]} component={Jobs} />
+              <Route path={["/mostakbal/internal-jobs", "/nasr-american/internal-jobs", "/mashaal/internal-jobs", "/nasr-frosya/internal-jobs", "/nasr-hamraa/internal-jobs"]} component={Internaljobs} />
              
             </Switch>
           </Content>
