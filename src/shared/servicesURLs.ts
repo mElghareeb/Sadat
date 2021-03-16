@@ -10,6 +10,7 @@ export const API_URLS = {
   LOGIN:`${PREFIX}/${schoolName}/token`,
   NEWSLIST:`${PREFIX}/${schoolName}/news/page/`,
   NEWSADD:`${PREFIX}/${schoolName}/news/add`,
+  NEWSEDIT:`${PREFIX}/${schoolName}/news/edit/`,
   NEWSELETE:`${PREFIX}/${schoolName}/news/delete`,
   PHOTOSLIST:`${PREFIX}/${schoolName}/gallery/page/`,
   PHOTOSAdd:`${PREFIX}/${schoolName}/gallery/add`,
